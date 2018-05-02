@@ -1,4 +1,10 @@
 # Shiny Server
+
+# List of packages
+pacs <- c("shiny", "shinyBS", "DT", "ggvis", "caret", "gbm", 
+          "glmnet", "kernlab", "nnet", "pls", "base", 
+          "randomForest", "RANN", "nortest")
+
 # Rate of Progression predictor
 
 library(shiny)
@@ -19,7 +25,12 @@ library(nortest)
 
 ## Observed and predicted clinical outcomes
 # load("Programs\\Analysis\\Rate Predicting\\shiny\\outcomes.RData")
-load('outcomes.RData')
+if(file.exists("outcomes.RData")) {
+  load('outcomes.RData')
+} else {
+  stop("Model data not found")
+}
+
 load('glossary.RData')
 
 ## Descriptive statistics
@@ -588,6 +599,27 @@ shinyServer(function(input, output, session) {
   
   output$glossary <- renderDataTable({
     gloss[,2:3]
+  })
+  
+  output$references <- renderUI({
+    rrefs <- unlist(sapply(pacs, function(x) format(citation(x), "html")))
+    rrefs <- rrefs[order(rrefs)]
+    refs <- paste0("<p>", refs, "\n</p>")
+    tags$body(
+      hr(),
+      p("This project is a part of a submission to",
+        a("The Parkinson's Progression Markers Initiative", href = "http://www.ppmi-info.org/"),
+        ", which is sponsored by",
+        a("The Michael J. Fox Foundation", href = "https://www.michaeljfox.org/"),
+        ". Information about the data challenge is available ",
+        a("here", href = "https://www.michaeljfox.org/research/data-science.html?navid=data-science-challenge"),
+        ". More information about this project available",
+        a(" upon request", href = "mailto:ryan-peterson@uiowa.edu"), "."),
+      hr(),
+      h3("R Packages"), HTML(rrefs),
+       h3("Other references"),
+       HTML(refs)
+     )
   })
   
 })

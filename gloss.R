@@ -126,4 +126,38 @@ gloss[,2] <- gsub("\\)","",gloss[,2])
 
 
 gloss <- gloss[order(gloss[,3]),]
-save(gloss, file = "glossary.RData")
+
+refs <- c(
+  "Berendse, H. W., Booij, J., Francot, C. M. J. E., Bergmans, P. L. M., Hijman, R., Stoof, J. C. and Wolters, E. Ch. (2001), Subclinical dopaminergic dysfunction in asymptomatic Parkinson's disease patients' relatives with a decreased sense of smell. Ann Neurol., 50: 34-41. doi:10.1002/ana.1049",
+  "Boser, B., Guyon, I., Vapnik, V. (1992). A training algorithm for optimal margin classifiers.
+  Proceedings of the fifth annual workshop on Computational learning theory - COLT /92. p. 144
+  doi: 10.1145/130385.130401",
+  "Brieman, L. (2001). Random Forests. Machine Learning, 45(1):5-32.
+  doi: 10.1023/A:1010933404324.",
+  "Brieman, L. (1997). Arcing The Edge. Technical Report 486, Statistics Department, University of
+  California, Berkeley, CA.",
+  "Cortes, C., Vapnik, V. (1995). Support-Vector Networks. Machine Learning. 20(3):273-297.
+  doi: 10.1007/BF00994018.",
+  "Friedman, J., Hastie, T., Tibshirani, R. (2010). Regularization Paths for Generalized Linear Models
+  via Coordinate Descent. Journal of Statistical Software, 33(1), 1-22. url:
+  http://www.jstatsoft.org/v33/i01/.",
+  "Friedman, J. (1999). Stochastic Gradient Boosting. url:
+  https://statweb.stanford.edu/~jhf/ftp/stobst.pdf.",
+  "Fahn S, Elton RL. UPDRS Development Committee. The Unified Parkinson's Disease Rating Scale.
+  In: Fahn S, Marsden CD, Calne DB, Goldstein M, editors. Recent Developments in Parkinson's Disease.2nd edn Macmillan Healthcare Information; Florham Park, NJ: 1987. pp. 153-163.pp. 293-304.",
+  "Friedman, J. (1999). Greedy Function Approximation: A Gradient Boosting Machine. IMS 1999 Reitz Lecture. url: http://statweb.stanford.edu/~jhf/ftp/trebst.pdf.",
+  "Hastie, T., Tibshirani, R., Friedman, J. (2009). Elements of Statistical Learning. New York: Springer.",
+  "Karatzoglou, A., Smola, A., Hornik, K., Zeileis, A. (2004). kernlab -- An S4 Package for Kernel Methods in R. Journal of Statistical Software, 11(9):1-20. url: http://www.jstatsoft.org/v11/i09/.",
+  "Kuhn, M., Johnson, K. (2013). Applied Predictive Modeling. New York: Springer. Liaw, A., Wiener, M. (2002). Classification and Regression by randomForest. R News, 2(3):18-22. url: http://CRAN.R-project.org/doc/Rnews/.",
+  "Mason, L., Baxter, J., Bartlett, P., Frean, M. (1999). Boosting Algorithms as Gradient Descent.
+  Advances in Neural Information Processing Systems 12. MIT Press. Pp. 512-518.",
+  "Ripley, B. (1996). Pattern Recognition and Neural Networks. Cambridge, UK: Cambridge
+  University Press.",
+  "PPMI Annual Investigator Meeting. (2016). Parkinson's Progression Marker Initiative. Michael J. Fox Foundation. New York, NY. May 4-5, 2016. url: http://www.ppmi-info.org/wp-content/uploads/2016/05/2016-PPMI-annual-mtg_DAY-1.pdf.",
+  "Venables, W., Ripley, B. (2002). Modern Applied Statistics with S. Fourth Edition. New York: Springer. url: http://www.stats.ox.ac.uk/pub/MASS4. ISBN: 0-387-95457-0",
+  "Weintraub, D., Simuni, T., Caspell-Garcia, C., Coffey, C., et al. (2015). Cognitive Performance and Neuropsychiatric Symptoms in Early, Untreated Parkinson's Disease. Movement Disorders, 30:919-927. doi: 10.1002/mds.26170.",
+  "Wold, H. (1966). Estimation of principal components and related models by iterative least squares. In P.R. Krishnaiaah (Ed.). Multivariate Analysis, pp. 391-420. New York: Academic Press.",
+  "Wold, S., Sjostrom, M., Ericksson, L. (2001). PLS-regression: a basic tool of chemometrics. Chemometrics and Intelligent Laboratory Systems, 58(2):109-130. doi:10.1016/S01697439(01)00155-1."
+)
+
+save(gloss, refs, file = "glossary.RData")

@@ -25,7 +25,12 @@ library(nortest)
 
 ## Observed and predicted clinical outcomes
 
-load('outcomes.RData')
+if(file.exists("outcomes.RData")) {
+  load('outcomes.RData')
+} else {
+  stop("Model data not found")
+}
+
 load('glossary.RData')
 
 AppInfo <- list('selectedOutcome' = RatesFitsVars[[5]], 
@@ -78,7 +83,10 @@ shinyUI(
               tabPanel("Imputed Covariates", 
                        verbatimTextOutput('Imputations')), 
               tabPanel("Glossary", 
-                       dataTableOutput("glossary"))
+                       dataTableOutput("glossary")),
+              tabPanel("References", 
+                       uiOutput("references"),
+                       uiOutput("references2"))
             )
           )
         ),
