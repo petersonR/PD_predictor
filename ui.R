@@ -91,7 +91,9 @@ shinyUI(
           )
         ),
         hr(
-          HTML(paste('Version', AppInfo$version)), br(), HTML('\uA9 2018, R Peterson'), br(), HTML(RunDate)
+          HTML(paste('Version', AppInfo$version, " - ")), 
+          a("View app source code", href = "https://github.com/petersonR/PD_predictor"), 
+          br(), HTML('\uA9 2018, R Peterson'), br(), HTML(RunDate)
         )
     )
   ))
